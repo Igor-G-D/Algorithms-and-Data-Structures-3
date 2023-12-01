@@ -1,6 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+import HeldKarp.*;
 
 public class App {
     public static void main(String[] args) throws FileNotFoundException { // args[0] = exact or aproximation algorithm (0 or 1), args[1] = file to read the adjacency matrix
@@ -9,13 +12,6 @@ public class App {
         try {
 
             File file = new File(args[0]);
-
-            // String[] files = file.list(); 
-            // System.out.println("Files are:"); 
-            // // Display the names of the files 
-            // for (int i = 0; i < files.length; i++) { 
-            //     System.out.println(files[i]); 
-            // } 
 
             Scanner scanner = new Scanner(file);
 
@@ -46,9 +42,22 @@ public class App {
                 System.out.println();
             }
 
+            HeldKarpAlgorithmTSP exactAlgorithm = new HeldKarpAlgorithmTSP(adjacencyMatrix, size);
+
+            long startTime = System.nanoTime(); // start timer
+
+            System.out.println(exactAlgorithm.execute());
+
+            long endTime = System.nanoTime(); // end timer
+
+            System.out.println("Execution Time: " + TimeUnit.NANOSECONDS.toMillis(endTime - startTime));
+
+            
+
         } catch(Exception e) {
             System.out.println("File not found.");
             e.printStackTrace();
         }
+
     }
 }

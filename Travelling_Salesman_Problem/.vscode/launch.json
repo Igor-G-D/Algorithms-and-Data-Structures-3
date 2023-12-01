@@ -16,7 +16,7 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "Travelling_Salesman_Problem_ee0e8d11",
-            "args": "./src/examples/tsp5_27603.txt"
+            "args": "./src/examples/tsp2_1248.txt"
         }
     ]
 }
