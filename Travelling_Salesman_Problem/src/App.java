@@ -35,6 +35,9 @@ public class App {
 
             scanner.close();
 
+            System.out.println(size);
+
+            
             for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
                     System.out.print(adjacencyMatrix[i][j] + " ");
@@ -42,7 +45,7 @@ public class App {
                 System.out.println();
             }
 
-            HeldKarpAlgorithmTSP exactAlgorithm = new HeldKarpAlgorithmTSP(adjacencyMatrix, size);
+            HeldKarpAlgorithmTSP exactAlgorithm = new HeldKarpAlgorithmTSP(adjacencyMatrix, size, (int)Math.pow(2,15)*1024*10); // 1GB of memory
 
             long startTime = System.nanoTime(); // start timer
 

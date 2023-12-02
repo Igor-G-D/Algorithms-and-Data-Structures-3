@@ -16,7 +16,8 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "Travelling_Salesman_Problem_ee0e8d11",
-            "args": "./src/examples/tsp2_1248.txt"
+            "vmArgs": "-Xms10G -Xmx10G",
+            "args": "./src/examples/tsp3_1194.txt"
         }
     ]
 }

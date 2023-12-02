@@ -1,22 +1,16 @@
 package HeldKarp;
 
-import java.util.Arrays;
-
 public class HeldKarpAlgorithmTSP {
     int[][] graphMatrix;
-    int[][] memoizationTable;
+    MemoizationCache<StatusKey, Integer> memoizationCache; // using a cache to make sure that the memory limit of the JVM isn't exceeded
     int infinity;
     int size;
 
-    public HeldKarpAlgorithmTSP(int[][] graphMatrix, int size) {
-        this.memoizationTable = new int[size + 1][(int) Math.pow(2, size)];
+    public HeldKarpAlgorithmTSP(int[][] graphMatrix, int size, int cacheCapacity) {
+        this.memoizationCache = new MemoizationCache<StatusKey, Integer>(cacheCapacity);
         this.infinity = Integer.MAX_VALUE;
         this.size = size;
         this.graphMatrix = graphMatrix;
-    
-        for (int i = 0; i < size + 1; i++) { // Ensure you fill the entire row with -1
-            Arrays.fill(memoizationTable[i], -1);
-        }
     }
 
     public int execute() {
@@ -25,14 +19,16 @@ public class HeldKarpAlgorithmTSP {
 
     int heldKarp(int pos, int bitmask) { // recursive function to calculate TSP
 
+        StatusKey key = new StatusKey(pos, bitmask);
+
         if (bitmask == (1<<(size))-1) { // if all bits in bitmask = 1, means that all nodes were visited
             return graphMatrix[pos][0]; 
             // all nodes have been visited, it means that the round trip is completed, so the 
             // distance between the starting node and the current node is 0, since they are the same
         }
 
-        if (memoizationTable[pos][bitmask] != -1) { // if not equal to -1, means that the result has already been computed before
-            return memoizationTable[pos][bitmask]; // return the already computed value
+        if (memoizationCache.containsKey(key)) { // if not equal to -1, means that the result has already been computed before
+            return memoizationCache.get(key); // return the already computed value
         }  
 
         int answer = infinity; // set answer to a really high value to start
@@ -46,7 +42,7 @@ public class HeldKarpAlgorithmTSP {
             }
         }
 
-        memoizationTable[pos][bitmask] = answer; // stores the result that was calculated for this position and bitmask so it can be used later
+        memoizationCache.put(key, answer); // stores the result that was calculated for this position and bitmask so it can be used later
         return answer;
     }
 }
