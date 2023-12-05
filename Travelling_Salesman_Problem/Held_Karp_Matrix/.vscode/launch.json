@@ -10,7 +10,8 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "Held_Karp_Matrix_6c93efa0",
-            "args": "./src/examples/tsp2_1248.txt"
+            "vmArgs": "-Xmx70G",
+            "args": "./src/examples/tsp5_27603.txt"
         },
         {
             "type": "java",

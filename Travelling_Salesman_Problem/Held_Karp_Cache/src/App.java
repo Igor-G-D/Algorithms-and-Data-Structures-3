@@ -45,7 +45,7 @@ public class App {
                 System.out.println();
             }
 
-            HeldKarpAlgorithmTSP exactAlgorithm = new HeldKarpAlgorithmTSP(adjacencyMatrix, size, (int)Math.pow(2,15)*1024*10); // 10GB of memory
+            HeldKarpAlgorithmTSP exactAlgorithm = new HeldKarpAlgorithmTSP(adjacencyMatrix, size, (int)Math.pow(2,15)*1024*5); // 10GB of memory
 
             long startTime = System.nanoTime(); // start timer
 

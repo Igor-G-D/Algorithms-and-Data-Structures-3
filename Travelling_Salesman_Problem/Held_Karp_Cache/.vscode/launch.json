@@ -10,7 +10,8 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "Held_Karp_Cache_76905fc3",
-            "args": "./src/examples/tsp2_1248.txt"
+            "vmArgs": "-Xms10G -Xmx10G",
+            "args": "./src/examples/tsp3_1194.txt"
         },
         {
             "type": "java",
