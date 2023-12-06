@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+// import Examples.TriangleInequalityCheck;
 import HeldKarp.*;
 
 public class Main {
@@ -12,8 +13,9 @@ public class Main {
         String algorithm = args[0];
 
         if(args[1].equals("1")) {
-            for(int i = 2; i < 46; i++) {
+            for(int i = 2; i < 45; i++) {
                 int[][] adjacencyMatrix = readAdjacencyMatrix("./Examples/adjacency_matrix_"+i+".txt");
+                //TriangleInequalityCheck.check(adjacencyMatrix);
                 int size = adjacencyMatrix.length;
                 switch(algorithm) {
                     case "heldkarp_m":
@@ -44,9 +46,11 @@ public class Main {
                         
                     break;
                     case "MST_TSP":
+                        MSTTSP msttsp = new MSTTSP(adjacencyMatrix, size);
+
                         long startTime_mst = System.nanoTime(); // start timer
             
-                        int result_mst = MSTTSP.execute(adjacencyMatrix, size);
+                        int result_mst = msttsp.execute();
             
                         long endTime_mst = System.nanoTime(); // end timer
 
@@ -56,13 +60,14 @@ public class Main {
                     break;
                     default:
                         System.out.println("Invalid Algorithm");
-                    break;
+                        return;
                 }
 
                 System.out.println("Finished size " + size);
             }
         } else if (args[1].equals("0")) {
             int[][] adjacencyMatrix = readAdjacencyMatrix(args[2]);
+            //TriangleInequalityCheck.check(adjacencyMatrix);
             int size = adjacencyMatrix.length;
             switch(algorithm) {
                 case "heldkarp_m":
@@ -93,9 +98,11 @@ public class Main {
                     ;
                 break;
                 case "MST_TSP":
+                    MSTTSP msttsp = new MSTTSP(adjacencyMatrix, size);
+
                     long startTime_mst = System.nanoTime(); // start timer
         
-                    int result_mst = MSTTSP.execute(adjacencyMatrix, size);
+                    int result_mst = msttsp.execute();
         
                     long endTime_mst = System.nanoTime(); // end timer
 
@@ -105,7 +112,7 @@ public class Main {
                 break;
                 default:
                     System.out.println("Invalid Algorithm");
-                break;
+                    return;
             }
         }
     }

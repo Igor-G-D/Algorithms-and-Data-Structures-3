@@ -17,7 +17,7 @@
             "mainClass": "Main",
             "projectName": "Travelling_Salesman_Problem_ee0e8d11",
             "vmArgs": "-Xms10G -Xmx10G",
-            "args": "MST_TSP 1"
+            "args": "MST_TSP 0 ./Examples/tsp5_27603.txt"
         }
     ]
 }
