@@ -53,7 +53,7 @@ public class MSTTSP {
             totalCost += graph[i][parent[i]];
         }
 
-        totalCost += graph[0][parent[0]];
+        totalCost += graph[1][parent[1]];
 
         return totalCost;
     }
