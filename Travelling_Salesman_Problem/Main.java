@@ -10,6 +10,7 @@ import HeldKarp.*;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException { // args[0] = what algorithm to use: "heldkarp_m" for heldkarp using memoization matrix, "heldkarp_c" for heldkarp using memoization cache, "MST_TSP" for aproximation using Tree algorithm, args[1] = read from file (0) or from examples (1), args[2] = file to read(use "null" if using examples), args[3] = cache size in GB if using heldkarp_c
         String algorithm = args[0];
+
         if(args[1].equals("1")) {
             for(int i = 1; i < 46; i++) {
                 int[][] adjacencyMatrix = readAdjacencyMatrix("./Examples/adjacency_matrix_"+i+".txt");
@@ -26,7 +27,7 @@ public class Main {
 
                         long execTime_m = TimeUnit.NANOSECONDS.toMillis(endTime_m - startTime_m);
 
-                        writeToFile(algorithm, size, result_m, execTime_m);
+                        writeToFile(algorithm, size, result_m, execTime_m, "ms");
                     break;
                     case "heldkarp_c":
                         HeldKarpAlgorithmTSP_Cache heldkarp_c = new HeldKarpAlgorithmTSP_Cache(adjacencyMatrix, size, (int)Math.pow(2,15)*1024*Integer.parseInt(args[3])); // N GB of memory
@@ -39,7 +40,7 @@ public class Main {
 
                         long execTime_c = TimeUnit.NANOSECONDS.toMillis(endTime_c - startTime_c);
 
-                        writeToFile(algorithm, size, result_c, execTime_c);
+                        writeToFile(algorithm, size, result_c, execTime_c, "ms");
                         
                     break;
                     case "MST_TSP":
@@ -49,9 +50,9 @@ public class Main {
             
                         long endTime_mst = System.nanoTime(); // end timer
 
-                        long execTime_mst = TimeUnit.NANOSECONDS.toMillis(endTime_mst - startTime_mst);
+                        long execTime_mst = TimeUnit.NANOSECONDS.toMicros(endTime_mst - startTime_mst);
 
-                        writeToFile(algorithm, size, result_mst, execTime_mst);
+                        writeToFile(algorithm, size, result_mst, execTime_mst, "μs");
                     break;
                     default:
                         System.out.println("Invalid Algorithm");
@@ -60,8 +61,8 @@ public class Main {
 
                 System.out.println("Finished size " + size);
             }
-        } else if (args[0].equals("0")) {
-            int[][] adjacencyMatrix = readAdjacencyMatrix(args[3]);
+        } else if (args[1].equals("0")) {
+            int[][] adjacencyMatrix = readAdjacencyMatrix(args[2]);
             int size = adjacencyMatrix.length;
             switch(algorithm) {
                 case "heldkarp_m":
@@ -75,7 +76,7 @@ public class Main {
 
                     long execTime_m = TimeUnit.NANOSECONDS.toMillis(endTime_m - startTime_m);
 
-                    writeToFile(algorithm, size, result_m, execTime_m);
+                    writeToFile(algorithm, size, result_m, execTime_m, "ms");
                 break;
                 case "heldkarp_c":
                     HeldKarpAlgorithmTSP_Cache heldkarp_c = new HeldKarpAlgorithmTSP_Cache(adjacencyMatrix, size, (int)Math.pow(2,15)*1024*Integer.parseInt(args[3])); // N GB of memory
@@ -88,8 +89,8 @@ public class Main {
 
                     long execTime_c = TimeUnit.NANOSECONDS.toMillis(endTime_c - startTime_c);
 
-                    writeToFile(algorithm, size, result_c, execTime_c);
-                    
+                    writeToFile(algorithm, size, result_c, execTime_c, "ms");
+                    ;
                 break;
                 case "MST_TSP":
                     long startTime_mst = System.nanoTime(); // start timer
@@ -98,9 +99,9 @@ public class Main {
         
                     long endTime_mst = System.nanoTime(); // end timer
 
-                    long execTime_mst = TimeUnit.NANOSECONDS.toMillis(endTime_mst - startTime_mst);
+                    long execTime_mst = TimeUnit.NANOSECONDS.toMicros(endTime_mst - startTime_mst);
 
-                    writeToFile(algorithm, size, result_mst, execTime_mst);
+                    writeToFile(algorithm, size, result_mst, execTime_mst, "μs");
                 break;
                 default:
                     System.out.println("Invalid Algorithm");
@@ -148,11 +149,11 @@ public class Main {
         return null;
     }
 
-    private static void writeToFile(String algorithm, int matrixSize, int result, long resultTime) {
+    private static void writeToFile(String algorithm, int matrixSize, int result, long resultTime, String unit) {
         String fileName = "Results_"+ algorithm +".txt";
 
         try (FileWriter writer = new FileWriter("./Results/"+fileName, true)) {
-            writer.write("Matrix size "+ matrixSize + " : " + "result = " + result + "  resultTime = " +  resultTime + "ms");
+            writer.write("Matrix size "+ matrixSize + " : " + "result = " + result + "  resultTime = " +  resultTime + unit);
             writer.write("\n");
             
         } catch (IOException e) {
