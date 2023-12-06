@@ -3,11 +3,10 @@ package stockbird.tspproxy;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class TSPproxy {
 
-    public static int[] TSPproxy(int[][] grafo) {
+    public static int[] TSP_proxy(int[][] grafo) {
         int numVertices = grafo.length;
         boolean[] visitados = new boolean[numVertices];
         int[] caminho = new int[numVertices + 1];
@@ -85,14 +84,14 @@ public class TSPproxy {
         return custoTotal;
     }
 
-    public static void main(String[] args) {
+    // public static void main(String[] args) {
 
-        String filepath = "tsp5_27603.txt";
-        int[][] grafo = lerMatrizDoArquivo(filepath);
+    //     String filepath = "tsp5_27603.txt";
+    //     int[][] grafo = lerMatrizDoArquivo(filepath);
 
-        int[] caminho = TSPproxy(grafo);
-        int custoDaSolucao = calcularCustoDoCaminho(grafo, caminho);
+    //     int[] caminho = TSP_proxy(grafo);
+    //     int custoDaSolucao = calcularCustoDoCaminho(grafo, caminho);
 
-        System.out.println("Custo total do Caixeiro Viajante: " + custoDaSolucao);
-    }
+    //     System.out.println("Custo total do Caixeiro Viajante: " + custoDaSolucao);
+    // }
 }

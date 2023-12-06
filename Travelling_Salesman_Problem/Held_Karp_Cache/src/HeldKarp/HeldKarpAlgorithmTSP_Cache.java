@@ -1,12 +1,12 @@
 package HeldKarp;
 
-public class HeldKarpAlgorithmTSP {
+public class HeldKarpAlgorithmTSP_Cache {
     int[][] graphMatrix;
     MemoizationCache<StatusKey, Integer> memoizationCache; // using a cache to make sure that the memory limit of the JVM isn't exceeded
     int infinity;
     int size;
 
-    public HeldKarpAlgorithmTSP(int[][] graphMatrix, int size, int cacheCapacity) {
+    public HeldKarpAlgorithmTSP_Cache(int[][] graphMatrix, int size, int cacheCapacity) {
         this.memoizationCache = new MemoizationCache<StatusKey, Integer>(cacheCapacity);
         this.infinity = Integer.MAX_VALUE;
         this.size = size;

@@ -2,13 +2,13 @@ package HeldKarp;
 
 import java.util.Arrays;
 
-public class HeldKarpAlgorithmTSP {
+public class HeldKarpAlgorithmTSP_Matrix {
     int[][] graphMatrix;
     int[][] memoizationTable;
     int infinity;
     int size;
 
-    public HeldKarpAlgorithmTSP(int[][] graphMatrix, int size) {
+    public HeldKarpAlgorithmTSP_Matrix(int[][] graphMatrix, int size) {
         this.memoizationTable = new int[size + 1][(int) Math.pow(2, size)];
         this.infinity = Integer.MAX_VALUE;
         this.size = size;
