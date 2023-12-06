@@ -50,8 +50,10 @@ public class MSTTSP {
         int totalCost = 0;
 
         for (int i = 1; i < V; i++) {
-            totalCost += graph[i][parent[i]] * 2;
+            totalCost += graph[i][parent[i]];
         }
+
+            totalCost += graph[1][parent[1]];
 
 
         return totalCost;
