@@ -1,0 +1,11 @@
+Matrix size 1 : result = 0  resultTime = 0ms
+Matrix size 2 : result = 94  resultTime = 796ms
+Matrix size 3 : result = 177  resultTime = 814ms
+Matrix size 4 : result = 248  resultTime = 797ms
+Matrix size 5 : result = 145  resultTime = 762ms
+Matrix size 6 : result = 228  resultTime = 815ms
+Matrix size 7 : result = 189  resultTime = 1969ms
+Matrix size 8 : result = 166  resultTime = 111ms
+Matrix size 9 : result = 245  resultTime = 250ms
+Matrix size 10 : result = 228  resultTime = 472ms
+Matrix size 11 : result = 163  resultTime = 5960ms
