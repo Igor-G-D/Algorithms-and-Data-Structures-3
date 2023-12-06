@@ -12,7 +12,7 @@ public class Main {
         String algorithm = args[0];
 
         if(args[1].equals("1")) {
-            for(int i = 1; i < 46; i++) {
+            for(int i = 2; i < 46; i++) {
                 int[][] adjacencyMatrix = readAdjacencyMatrix("./Examples/adjacency_matrix_"+i+".txt");
                 int size = adjacencyMatrix.length;
                 switch(algorithm) {
@@ -46,7 +46,7 @@ public class Main {
                     case "MST_TSP":
                         long startTime_mst = System.nanoTime(); // start timer
             
-                        int result_mst = MSTTSP.mstTSP(adjacencyMatrix);
+                        int result_mst = MSTTSP.execute(adjacencyMatrix, size);
             
                         long endTime_mst = System.nanoTime(); // end timer
 
@@ -95,7 +95,7 @@ public class Main {
                 case "MST_TSP":
                     long startTime_mst = System.nanoTime(); // start timer
         
-                    int result_mst = MSTTSP.mstTSP(adjacencyMatrix);
+                    int result_mst = MSTTSP.execute(adjacencyMatrix, size);
         
                     long endTime_mst = System.nanoTime(); // end timer
 
