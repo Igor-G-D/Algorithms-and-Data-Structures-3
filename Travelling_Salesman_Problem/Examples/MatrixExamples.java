@@ -1,3 +1,4 @@
+/* 
 package Examples;
 
 import java.io.File;
@@ -8,23 +9,23 @@ import java.util.Scanner;
 
 public class MatrixExamples {
 
-    // public static void main (String[] args) {
-    //     int[][] originGraph;
-    //     try {
-    //         originGraph = readAdjacencyMatrix("./Examples/tsp4_7013.txt");
+    public static void main (String[] args) {
+        int[][] originGraph;
+        try {
+            originGraph = readAdjacencyMatrix("./Examples/tsp4_7013.txt");
 
-    //         for (int i = 2; i <= 44; i++) {
-    //             int[][] newGraph = cutGraph(originGraph, i);
-    //             writeMatrixToFile(newGraph, newGraph.length);
-    //         }
+            for (int i = 2; i <= 44; i++) {
+                int[][] newGraph = cutGraph(originGraph, i);
+                writeMatrixToFile(newGraph, newGraph.length);
+            }
 
-    //         System.out.println("Random adjacency matrices generated and written to files.");
-    //     } catch (FileNotFoundException e) {
-    //         System.out.println("File not found!");
-    //         e.printStackTrace();
-    //     }
+            System.out.println("Random adjacency matrices generated and written to files.");
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+            e.printStackTrace();
+        }
 
-    // }
+    }
 
     public static int[][] cutGraph(int[][] graphOrigin, int size) {
 
@@ -98,3 +99,4 @@ public class MatrixExamples {
         return null;
     }
 }
+*/
